@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import PollForm from "./components/PollForm.jsx"
+import PollForm from "../components/PollForm.jsx"
 function CreatePoll() {
     const navigate = useNavigate()
     const handleCreatePoll = async (pollData) => {
