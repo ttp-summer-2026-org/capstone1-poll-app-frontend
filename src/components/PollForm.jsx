@@ -39,14 +39,14 @@ function PollForm({onSubmit}){
             </div>
              <div className="form-group">
                 <label>Options</label>
-                {options.map((option,index)=>{
-                    <input 
+                {options.map((option,index)=>(
+                    <input
                     type="text"
-                    key ={index} 
-                    value={option} 
+                    key ={index}
+                    value={option}
                     onChange={(e) => handleOptionChange(index, e.target.value)}
                     placeholder={`Option ${index+1}`}   />
-                })}
+                ))}
                 <button type="button" className="btn" onClick={addOption}>Add Option</button>
              </div>
              <button type="submit" className="btn">Create Poll</button>

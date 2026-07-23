@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import VoteForm from "../components/VoteForm";
+import VoteForm from "../components/VoteForm.jsx";
 function Poll() {
-    const {id} = param.id
+    const { id } = useParams()
     const navigate = useNavigate()
       // TODO: replace with real fetch to GET /polls/:id once backend is ready
     const [poll] = useState({
@@ -24,8 +24,8 @@ function Poll() {
     return (
         <div>
             <h1>Poll</h1>
-            <VoteForm 
-            options = {Poll.options}
+            <VoteForm
+            options = {poll.options}
             onVote = {handleVote}/>
         </div>
     );

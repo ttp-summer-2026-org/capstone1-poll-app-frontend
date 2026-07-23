@@ -20,7 +20,7 @@ function VoteForm({options, onVote}){
                         name = "poll-option" 
                         value ={opt.id}
                         checked = {selectedOptionId === opt.id}
-                        onChange={()=>selectedOptionId(opt.id)}
+                        onChange={()=>setSelectedOptionId(opt.id)}
                         />
                     </label>
 
