@@ -14,16 +14,29 @@ function CreatePoll() {
       // const newPoll = await res.json()
 
       // mock response for now
-      const newPoll = { id: Date.now(), ...pollData }
+      const newPoll = {
+        id: Date.now(),
+        title: pollData.title,
+        description: pollData.description,
+        options: pollData.options
+          .map((text) => text.trim())
+          .filter((text) => text !== '')
+          .map((text, index) => ({ id: index + 1, text })),
+      }
 
-      navigate(`/polls/${newPoll.id}`)
+      const storedPolls = JSON.parse(localStorage.getItem('polls') || '{}')
+      storedPolls[newPoll.id] = newPoll
+      localStorage.setItem('polls', JSON.stringify(storedPolls))
+
+      navigate(`/poll/${newPoll.id}`)
     } catch (err) {
       console.error('Failed to create poll:', err)
       alert('Something went wrong creating the poll.')
     }
   }
     return (
-        <div>
+        <div className="page-shell">
+            <span className="eyebrow">New Poll</span>
             <h1 className="page-title">Create a Poll</h1>
             <PollForm onSubmit={handleCreatePoll}/>
         </div>

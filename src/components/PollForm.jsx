@@ -7,7 +7,7 @@ function PollForm({onSubmit}){
         e.preventDefault();
         onSubmit({title, description, options})
     }
-    const handleOptionChange = (index,value) => 
+    const handleOptionChange = (index,value) =>
     {
         const updatedOptions = [...options]
         updatedOptions[index] = value;
@@ -18,10 +18,12 @@ function PollForm({onSubmit}){
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="card" onSubmit={handleSubmit}>
+            <h2>New Poll</h2>
             <div className = "form-group">
                 <label htmlFor="title">Poll Title</label>
-                <input 
+                <input
+                className="input"
                 id = "title"
                 type = "text"
                 value = {title}
@@ -30,8 +32,10 @@ function PollForm({onSubmit}){
             </div>
 
             <div className = "form-group">
-                <label htmlFor="description"></label>
-                <input type="text"
+                <label htmlFor="description">Description</label>
+                <input
+                className="input"
+                type="text"
                 id = "description"
                 value = {description}
                 onChange={(e)=>setDescription(e.target.value)}
@@ -39,19 +43,22 @@ function PollForm({onSubmit}){
             </div>
              <div className="form-group">
                 <label>Options</label>
-                {options.map((option,index)=>(
-                    <input
-                    type="text"
-                    key ={index}
-                    value={option}
-                    onChange={(e) => handleOptionChange(index, e.target.value)}
-                    placeholder={`Option ${index+1}`}   />
-                ))}
-                <button type="button" className="btn" onClick={addOption}>Add Option</button>
+                <div className="options-editor">
+                    {options.map((option,index)=>(
+                        <input
+                        className="input"
+                        type="text"
+                        key ={index}
+                        value={option}
+                        onChange={(e) => handleOptionChange(index, e.target.value)}
+                        placeholder={`Option ${index+1}`}   />
+                    ))}
+                </div>
+                <button type="button" className="btn btn-secondary" onClick={addOption}>Add Option</button>
              </div>
-             <button type="submit" className="btn">Create Poll</button>
+             <button type="submit" className="btn btn-primary">Create Poll</button>
         </form>
-        
+
     )
 
 }

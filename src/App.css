@@ -1,0 +1,43 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 4px;
+}
+
+.navbar .brand {
+    font-family: var(--heading);
+    font-weight: 800;
+    font-size: 20px;
+    color: var(--text-h);
+    text-decoration: none;
+    letter-spacing: -0.3px;
+}
+
+.navbar .nav-links {
+    display: flex;
+    gap: 8px;
+}
+
+.navbar a.nav-link {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 10px 18px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    transition:
+        background 0.15s ease,
+        border-color 0.15s ease;
+}
+
+.navbar a.nav-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--card-border);
+}
+
+.navbar a.nav-link.active {
+    background: linear-gradient(120deg, var(--purple-600), var(--purple-500));
+    color: #fff;
+}

@@ -10,25 +10,27 @@ function VoteForm({options, onVote}){
         onVote(selectedOptionId)
     }
     return  (
-        <form onSubmit={handleSubmit}>
-            <div className="form-group">
+        <form className="card" onSubmit={handleSubmit}>
+            <div className="options-panel">
                 {options.map((opt)=>(
-                    <label 
+                    <label
                     key = {opt.id}
-                    style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
+                    className={`option-row${selectedOptionId === opt.id ? " is-selected" : ""}`}>
                         <input type="radio"
-                        name = "poll-option" 
+                        name = "poll-option"
                         value ={opt.id}
                         checked = {selectedOptionId === opt.id}
                         onChange={()=>setSelectedOptionId(opt.id)}
                         />
+                        <span className="option-radio" />
+                        <span>{opt.text}</span>
                     </label>
 
                 ))}
             </div>
-            <button type="submit" className="btn">Submit Vote</button>
+            <button type="submit" className="btn btn-primary">Submit Vote</button>
         </form>
     )
 
 }
-export default VoteForm 
+export default VoteForm
